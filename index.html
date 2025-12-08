@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealBuddy - Health Assistant</title>
+    <link rel="icon" type="image/x-icon" href="stock/new-removebg-preview.ico">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Authentication Modal -->
+    <div id="authModal" class="modal-overlay active">
+        <div class="auth-modal">
+            <!-- Auth Backdrop Decoration -->
+            <div class="auth-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+
+            <div class="auth-wrapper">
+                <!-- Logo Section -->
+                <div class="auth-logo">
+                    <div class="logo-icon">💊</div>
+                    <h1>HealBuddy</h1>
+                    <p>Your Personal Health Assistant</p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <h2>Welcome Back</h2>
+                    
+                    <div class="input-group">
+                        <input type="email" id="loginEmail" placeholder="Email address" required>
+                        <span class="input-icon">✉️</span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                        <span class="input-icon">🔒</span>
+                    </div>
+
+                    <button type="submit" class="btn-primary-auth">Sign In</button>
+
+                    <div class="auth-divider">
+                        <span>Don't have an account?</span>
+                    </div>
+
+                    <a href="#" onclick="switchToRegister(event)" class="btn-secondary-auth">Create Account</a>
+
+                    <div id="authMessage" class="auth-message"></div>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form">
+                    <h2>Create Account</h2>
+                    
+                    <div class="input-group">
+                        <input type="text" id="registerName" placeholder="Full name" required>
+                        <span class="input-icon">👤</span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="registerEmail" placeholder="Email address" required>
+                        <span class="input-icon">✉️</span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="registerPassword" placeholder="Password (min 6 chars)" required>
+                        <span class="input-icon">🔒</span>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="password" id="registerConfirmPassword" placeholder="Confirm password" required>
+                        <span class="input-icon">🔐</span>
+                    </div>
+
+                    <button type="submit" class="btn-primary-auth">Create Account</button>
+
+                    <div class="auth-divider">
+                        <span>Already have an account?</span>
+                    </div>
+
+                    <a href="#" onclick="switchToLogin(event)" class="btn-secondary-auth">Sign In</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="hidden">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <span class="brand-icon">💊</span>
+                    <h1>HealBuddy</h1>
+                </div>
+                <div class="nav-right">
+                    <div class="user-profile">
+                        <span id="userDisplay" class="user-name">Welcome</span>
+                        <button class="btn-logout" onclick="logout()">Logout</button>
+                    </div>
+                    <a href="admin-dashboard.html" class="nav-link admin-link" title="Analytics"><img src="stock/analytics.ico  " alt="Analytics" class="analytics-icon"></a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Tell us how you're feeling</h2>
+                <p>Select your symptoms below and let us help identify possible conditions</p>
+            </div>
+            <div class="hero-decoration">
+                <div class="floating-shape shape-a"></div>
+                <div class="floating-shape shape-b"></div>
+                <div class="floating-shape shape-c"></div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="app-container">
+            <!-- Symptoms Panel -->
+            <section class="symptoms-panel">
+                <div class="panel-header">
+                    <h2>Symptoms</h2>
+                    <span class="selected-badge" id="selectedCount">0</span>
+                </div>
+
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        id="symptomSearch" 
+                        placeholder="Search symptoms..."
+                        class="search-input"
+                    >
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="symptoms-list" id="symptomsGrid">
+                    <!-- Populated by JavaScript -->
+                </div>
+
+                <div class="panel-actions">
+                    <button class="btn-analyze" onclick="analyzeSymptoms()">
+                        <span class="btn-icon">⚡</span> Analyze
+                    </button>
+                    <button class="btn-clear" onclick="clearSelection()">
+                        <span class="btn-icon">✕</span> Clear
+                    </button>
+                </div>
+            </section>
+
+            <!-- Results Panel -->
+            <section class="results-panel">
+                <div class="panel-header">
+                    <h2>Results</h2>
+                    <span class="results-icon">🔍</span>
+                </div>
+
+                <div id="resultsContainer" class="results-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">👋</div>
+                        <h3>Ready to get started?</h3>
+                        <p>Select your symptoms to see personalized results</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>⚕️ Disclaimer: This is for informational purposes only. Always consult with a healthcare professional for medical advice.</p>
+            <p class="disclaimer">This is not medical advice. For serious symptoms, consult a doctor.</p>
+        </footer>
+    </div>
+
+    <script src="js/csvParser.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+symptom_id,symptom_name,category
+1,Fever,General
+2,Cough,Other
+3,Headache,Other
+4,Fatigue,Other
+5,Nausea,Other
+6,Vomiting,General
+7,Diarrhea,Other
+8,Chest Pain,Other
+9,Abdominal Pain,Other
+10,Shortness of Breath,Other
+11,Sore Throat,General
+12,Runny Nose,Other
+13,Sneezing,Other
+14,Body Aches,Other
+15,Joint Pain,Other
+16,Back Pain,General
+17,Dizziness,Other
+18,Blurred Vision,Other
+19,Rash,Other
+20,Itching,Other
+21,Chills,General
+22,Sweating,Other
+23,Weight Loss,Other
+24,Weight Gain,Other
+25,Hair Loss,Other
+26,Swelling,General
+27,Palpitations,Other
+28,Anxiety,Other
+29,Depression,Other
+30,Confusion,Other
+31,Memory Loss,General
+32,Insomnia,Other
+33,Loss of Appetite,Other
+34,Increased Appetite,Other
+35,Thirst,Other
+36,Frequent Urination,General
+37,Bleeding,Other
+38,Bruising,Other
+39,Numbness,Other
+40,Tingling,Other
+41,Muscle Weakness,General
+42,Sensitivity to Light,Other
+43,Hearing Loss,Other
+44,Ear Pain,Other
+45,Nosebleed,Other
+46,Yellow Skin,General
+47,Dark Urine,Other
+48,Pale Skin,Other
+49,Dry Skin,Other
+50,Red Eyes,Other
+51,Watery Eyes,General
+52,Constipation,Other
+53,Bloating,Other
+54,Chest Tightness,Other
+55,Wheezing,Other
+56,Cold Hands,General
+57,Cold Feet,Other
+58,High Fever,Other
+59,Low Fever,Other
+60,Dry Cough,Other
+61,Wet Cough,General
+62,Difficulty Swallowing,Other
+63,Loss of Smell,Other
+64,Loss of Taste,Other
+65,Rapid Heartbeat,Other
+66,Slow Heartbeat,General
+67,High Blood Pressure,Other
+68,Low Blood Pressure,Other
+69,Dehydration,Other
+70,Shivering,Other
+71,Night Sweats,General
+72,Swollen Lymph Nodes,Other
+73,Ulcers,Other
+74,Burning Sensation,Other
+75,Cramping,Other
+76,High Sugar,General
+77,Low Sugar,Other
+78,Jaundice,Other
+79,Hiccups,Other
+80,Speech Issues,Other
+81,Coordination Problems,General
+82,Tremors,Other
+83,Seizures,Other
+84,Hallucinations,Other
+85,Chest Burning,Other
+86,Indigestion,General
+87,Acid Reflux,Other
+88,Gas,Other
+89,Fainting,Other
+90,Severe Fatigue,Other

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealBuddy - Analytics Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body class="admin-body">
+    <!-- Navigation -->
+    <nav class="navbar admin-navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">📊</span>
+                <h1>Analytics Dashboard</h1>
+            </div>
+            <div class="nav-right">
+                <button class="btn-logout" onclick="goBackToApp()">← Back to App</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Hero Section -->
+        <section class="admin-hero">
+            <div class="hero-content">
+                <h2>System Analytics & Insights</h2>
+                <p>Monitor user behavior, symptom trends, and application performance</p>
+                <button class="btn-danger" onclick="clearAnalyticsData()">🗑️ Clear All Data</button>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="admin-content">
+            <!-- Summary Cards -->
+            <section class="summary-cards">
+                <div class="stat-card stat-card-1">
+                    <div class="stat-header">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Total Sessions</div>
+                            <div class="stat-value" id="totalSessions">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-trend">+12% from last month</div>
+                </div>
+
+                <div class="stat-card stat-card-2">
+                    <div class="stat-header">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Active Users</div>
+                            <div class="stat-value" id="totalUsers">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-trend">Unique registrations</div>
+                </div>
+
+                <div class="stat-card stat-card-3">
+                    <div class="stat-header">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Last 7 Days</div>
+                            <div class="stat-value" id="last7Days">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-trend">This week's activity</div>
+                </div>
+
+                <div class="stat-card stat-card-4">
+                    <div class="stat-header">
+                        <div class="stat-icon">🔄</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Retention Rate</div>
+                            <div class="stat-value" id="retentionRate">0%</div>
+                        </div>
+                    </div>
+                    <div class="stat-trend">Repeat users</div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <!-- Top Symptoms Chart -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>🩺 Top Symptoms Selected</h3>
+                        <span class="chart-badge">Last 50 Sessions</span>
+                    </div>
+                    <canvas id="symptomsChart"></canvas>
+                </div>
+
+                <!-- Top Diagnoses Chart -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>🏥 Popular Diagnoses</h3>
+                        <span class="chart-badge">Top 10</span>
+                    </div>
+                    <canvas id="diagnosesChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Activity Chart -->
+            <section class="activity-section">
+                <div class="chart-card full-width">
+                    <div class="chart-header">
+                        <h3>📊 Session Activity Timeline</h3>
+                        <span class="chart-badge">Last 50 Sessions</span>
+                    </div>
+                    <canvas id="activityChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Tables Section -->
+            <section class="tables-section">
+                <!-- Recent Sessions Table -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3>⏱️ Recent Sessions</h3>
+                        <span class="table-badge">Last 20</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Timestamp</th>
+                                    <th>Symptoms</th>
+                                    <th>Top Match</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentSessionsTable">
+                                <tr><td colspan="5" class="loading">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- User Statistics Table -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3>👤 User Statistics</h3>
+                        <span class="table-badge">Top 20</span>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>First Login</th>
+                                    <th>Last Active</th>
+                                    <th>Queries</th>
+                                </tr>
+                            </thead>
+                            <tbody id="userStatsTable">
+                                <tr><td colspan="4" class="loading">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="admin-footer">
+            <p>Auto-refreshes every 30 seconds • Data stored locally in browser</p>
+        </footer>
+    </div>
+
+    <script src="js/analytics.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

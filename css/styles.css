@@ -1,0 +1,905 @@
+/* ==================== VARIABLES & FOUNDATION ==================== */
+:root {
+    --primary-color: #FF6B9D;
+    --primary-light: #FFA3C7;
+    --secondary-color: #4ECDC4;
+    --secondary-light: #7FE5DB;
+    --accent-color: #FFE66D;
+    --accent-dark: #FF8C42;
+    --dark-bg: #1A1A2E;
+    --light-bg: #F5F7FA;
+    --card-bg: #FFFFFF;
+    --text-primary: #1A1A2E;
+    --text-secondary: #666666;
+    --border-color: #E0E0E0;
+    --success: #4CAF50;
+    --warning: #FF9800;
+    --danger: #F44336;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--light-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==================== AUTHENTICATION STYLES ==================== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+.modal-overlay:not(.active) {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.auth-modal {
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100px) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.auth-shapes {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    z-index: -1;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.1;
+    border-radius: 50%;
+}
+
+.shape-1 {
+    width: 200px;
+    height: 200px;
+    background: white;
+    top: -50px;
+    right: 100px;
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    background: white;
+    bottom: 100px;
+    left: -50px;
+}
+
+.shape-3 {
+    width: 100px;
+    height: 100px;
+    background: white;
+    top: 50%;
+    right: -30px;
+}
+
+.auth-wrapper {
+    background: white;
+    border-radius: 24px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.auth-logo h1 {
+    font-size: 2em;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.auth-logo p {
+    color: var(--text-secondary);
+    font-size: 0.95em;
+}
+
+.auth-form {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.auth-form h2 {
+    font-size: 1.5em;
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px 14px 45px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1em;
+    background: white;
+    color: var(--text-primary);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.1);
+}
+
+.input-group input::placeholder {
+    color: #999;
+}
+
+.input-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1em;
+}
+
+.btn-primary-auth {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #FF4081 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.05em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+}
+
+.btn-primary-auth:active {
+    transform: translateY(0);
+}
+
+.auth-divider {
+    text-align: center;
+    margin: 25px 0 20px;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+.btn-secondary-auth {
+    width: 100%;
+    display: block;
+    padding: 14px;
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.auth-message {
+    display: none;
+    margin-top: 20px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9em;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.auth-message.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.auth-message.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* ==================== MAIN APP STYLES ==================== */
+.navbar {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0;
+}
+
+.brand-icon {
+    font-size: 1.8em;
+}
+
+.nav-brand h1 {
+    font-size: 1.5em;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-name {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.btn-logout {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, var(--danger), #E53935);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.admin-link {
+    font-size: 1.4em;
+    text-decoration: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ==================== HERO SECTION ==================== */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    animation: fadeInDown 0.7s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.hero h2 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    opacity: 0.95;
+}
+
+
+.hero-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.floating-shape {
+    position: absolute;
+    opacity: 0.1;
+    border-radius: 50%;
+}
+
+.shape-a {
+    width: 300px;
+    height: 300px;
+    background: white;
+    top: -100px;
+    right: -50px;
+    animation: float 6s ease-in-out infinite;
+}
+
+.shape-b {
+    width: 200px;
+    height: 200px;
+    background: white;
+    bottom: -50px;
+    left: 10%;
+    animation: float 8s ease-in-out infinite 1s;
+}
+
+.shape-c {
+    width: 150px;
+    height: 150px;
+    background: white;
+    top: 50%;
+    left: -30px;
+    animation: float 7s ease-in-out infinite 0.5s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+/* ==================== APP CONTAINER ==================== */
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.symptoms-panel,
+.results-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.panel-header h2 {
+    font-size: 1.5em;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.selected-badge,
+.results-icon {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #FF4081 100%);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85em;
+}
+
+.results-icon {
+    font-size: 1.2em;
+    padding: 8px 12px;
+}
+
+/* ==================== SEARCH BOX ==================== */
+.search-container {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 0.95em;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1em;
+    color: var(--text-secondary);
+}
+
+/* ==================== SYMPTOMS LIST ==================== */
+.symptoms-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-bottom: 20px;
+}
+
+.symptoms-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.symptoms-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.symptoms-list::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+.symptoms-list::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.symptom-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background: white;
+}
+
+.symptom-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.symptom-item label {
+    flex: 1;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.symptom-item input[type="checkbox"]:checked + label {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/* ==================== BUTTONS ==================== */
+.panel-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.btn-analyze,
+.btn-clear {
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-analyze {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #FF4081 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+}
+
+.btn-clear {
+    background: var(--light-bg);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+}
+
+.btn-icon {
+    font-size: 1.2em;
+}
+
+/* ==================== RESULTS PANEL ==================== */
+.results-list {
+    min-height: 400px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.empty-state h3 {
+    font-size: 1.3em;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+/* ==================== DISEASE CARD ==================== */
+.disease-card {
+    background: linear-gradient(135deg, #FAFAFA 0%, #F0F0F0 100%);
+    border-left: 5px solid var(--primary-color);
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.disease-card.urgent {
+    border-left-color: var(--danger);
+    background: linear-gradient(135deg, #FFE8E8 0%, #FFD4D4 100%);
+}
+
+.disease-card.high {
+    border-left-color: var(--warning);
+    background: linear-gradient(135deg, #FFF5E8 0%, #FFE8D4 100%);
+}
+
+.disease-card.low {
+    border-left-color: var(--success);
+    background: linear-gradient(135deg, #E8F5E9 0%, #D4F1D4 100%);
+}
+
+.disease-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 12px;
+}
+
+.disease-name {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--text-primary);
+    flex: 1;
+}
+
+.match-score {
+    background: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    color: var(--primary-color);
+    min-width: 70px;
+    text-align: right;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.8em;
+    font-weight: 700;
+    margin-right: 8px;
+    margin-top: 10px;
+}
+
+.badge-category {
+    background: rgba(78, 205, 196, 0.2);
+    color: var(--secondary-color);
+}
+
+.badge-severity {
+    background: rgba(255, 107, 157, 0.2);
+    color: var(--primary-color);
+}
+
+.matching-symptoms {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.matching-symptoms strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* ==================== TRIAGE ALERT ==================== */
+.triage-alert {
+    background: linear-gradient(135deg, #FFE8E8 0%, #FFD4D4 100%);
+    border: 2px solid var(--danger);
+    border-left: 5px solid var(--danger);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 20px;
+    animation: slideDown 0.4s ease;
+}
+
+.triage-alert.high {
+    background: linear-gradient(135deg, #FFF5E8 0%, #FFE8D4 100%);
+    border-color: var(--warning);
+    border-left-color: var(--warning);
+}
+
+.triage-alert.low {
+    background: linear-gradient(135deg, #E8F5E9 0%, #D4F1D4 100%);
+    border-color: var(--success);
+    border-left-color: var(--success);
+}
+
+.triage-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.triage-icon {
+    font-size: 1.5em;
+}
+
+.triage-level {
+    font-weight: 700;
+    color: var(--danger);
+    text-transform: uppercase;
+    font-size: 0.95em;
+    letter-spacing: 1px;
+}
+
+.triage-alert.high .triage-level {
+    color: #E65100;
+}
+
+.triage-alert.low .triage-level {
+    color: #2E7D32;
+}
+
+.triage-message {
+    color: var(--text-primary);
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* ==================== FOOTER ==================== */
+.app-footer {
+    background: #F5F7FA;
+    padding: 20px;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+    margin-top: 40px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1024px) {
+    .app-container {
+        grid-template-columns: 1fr;
+        padding: 30px 15px;
+    }
+
+    .hero h2 {
+        font-size: 2.2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .user-profile {
+        flex: 1;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero h2 {
+        font-size: 1.8em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .hero-stats {
+        gap: 20px;
+    }
+
+    .stat-number {
+        font-size: 1.8em;
+    }
+
+    .app-container {
+        padding: 20px 15px;
+        gap: 20px;
+    }
+
+    .symptoms-panel,
+    .results-panel {
+        padding: 20px;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .symptoms-list,
+    .results-list {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-overlay {
+        padding: 20px;
+    }
+
+    .auth-wrapper {
+        padding: 30px 20px;
+    }
+
+    .auth-form h2 {
+        font-size: 1.2em;
+    }
+
+    .hero h2 {
+        font-size: 1.5em;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .panel-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .disease-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .match-score {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/* small, subtle disclaimer text */
+.disclaimer {
+    font-size: 0.88em;
+    color: #7a7a7a;
+    margin-top: 10px;
+    line-height: 1.3;
+    font-style: italic;
+}

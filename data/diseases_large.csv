@@ -1,0 +1,49 @@
+disease_id,disease_name,category,severity
+1,Dengue,Viral,Mild
+2,Malaria,Other,Mild
+3,Typhoid,Other,Moderate
+4,COVID-19,Other,Severe
+5,Common Cold,Viral,Moderate
+6,Flu,Other,Severe
+7,Asthma,Other,Moderate
+8,Tuberculosis,Other,Moderate
+9,Pneumonia,Viral,Moderate
+10,Bronchitis,Other,Moderate
+11,Sinusitis,Other,Severe
+12,Migraine,Other,Severe
+13,Hypertension,Viral,Moderate
+14,Hypotension,Other,Mild
+15,Diabetes Type 1,Other,Moderate
+16,Diabetes Type 2,Other,Moderate
+17,Heart Attack,Viral,Severe
+18,Stroke,Other,Severe
+19,Anxiety Disorder,Other,Moderate
+20,Depression Disorder,Other,Moderate
+21,Arthritis,Viral,Moderate
+22,Osteoporosis,Other,Severe
+23,Liver Disease,Other,Moderate
+24,Kidney Failure,Other,Mild
+25,UTI,Viral,Severe
+26,Gastritis,Other,Moderate
+27,Acid Reflux,Other,Severe
+28,Food Poisoning,Other,Mild
+29,Irritable Bowel Syndrome,Viral,Mild
+30,Epilepsy,Other,Moderate
+31,Parkinson’s,Other,Mild
+32,Alzheimer’s,Other,Moderate
+33,Skin Allergy,Viral,Severe
+34,Eczema,Other,Severe
+35,Psoriasis,Other,Moderate
+36,Hepatitis A,Other,Moderate
+37,Hepatitis B,Viral,Mild
+38,Hepatitis C,Other,Mild
+39,Anemia,Other,Moderate
+40,Leukemia,Other,Moderate
+41,Thyroid Disorder,Viral,Severe
+42,Hyperthyroidism,Other,Mild
+43,Hypothyroidism,Other,Moderate
+44,Obesity,Other,Moderate
+45,GERD,Viral,Moderate
+46,Appendicitis,Other,Mild
+47,Gallstones,Other,Moderate
+48,Pancreatitis,Other,Severe

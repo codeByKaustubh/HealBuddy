@@ -36,18 +36,7 @@ function updateSelectedCount() {
     document.getElementById('selectedCount').textContent = selectedSymptoms.length;
 }
 
-function clearSelection() {
-    selectedSymptoms = [];
-    document.getElementById('symptomSearch').value = '';
-    document.getElementById('resultsContainer').innerHTML = `
-        <div class="empty-state">
-            <div class="empty-icon">👋</div>
-            <h3>Ready to get started?</h3>
-            <p>Select your symptoms to see personalized results</p>
-        </div>
-    `;
-    renderSymptoms(allSymptoms);
-}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const search = document.getElementById('symptomSearch');

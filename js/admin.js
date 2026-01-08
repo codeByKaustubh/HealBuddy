@@ -175,12 +175,4 @@ function populateUserStats(userStats) {
 
 function goBackToApp() {
     window.location.href = 'index.html';
-}
-
-function clearAnalyticsData() {
-    if (confirm('⚠️ This will permanently delete all analytics data. Are you sure?')) {
-        Analytics.clearAnalytics();
-        alert('✅ Analytics data cleared successfully');
-        location.reload();
-    }
-}
+} 

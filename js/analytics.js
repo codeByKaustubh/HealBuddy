@@ -127,13 +127,5 @@ const Analytics = {
         };
     },
 
-    // Clear all analytics (admin only)
-    clearAnalytics() {
-        localStorage.setItem('healbuddyAnalytics', JSON.stringify({
-            sessions: [],
-            symptomTrends: {},
-            diagnosisTrends: {},
-            userStats: {}
-        }));
-    }
+
 };

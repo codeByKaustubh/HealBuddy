@@ -577,12 +577,11 @@ body {
 /* ==================== BUTTONS ==================== */
 .panel-actions {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 12px;
 }
 
-.btn-analyze,
-.btn-clear {
+.btn-analyze {
     padding: 14px;
     border: none;
     border-radius: 12px;
@@ -593,18 +592,9 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-}
-
-.btn-analyze {
     background: linear-gradient(135deg, var(--primary-color) 0%, #FF4081 100%);
     color: white;
     box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
-}
-
-.btn-clear {
-    background: var(--light-bg);
-    color: var(--text-primary);
-    border: 2px solid var(--border-color);
 }
 
 .btn-icon {

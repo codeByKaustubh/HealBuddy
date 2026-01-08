@@ -101,12 +101,7 @@ function analyzeSymptoms() {
         }
     });
 
-    // Track analytics
-    const currentUser = Auth.getCurrentUser();
-    const sorted = Object.values(scores).sort((a, b) => b.score - a.score);
-    if (sorted.length && currentUser && typeof Analytics !== 'undefined') {
-        Analytics.recordQuery(currentUser.email, selectedSymptoms, sorted[0].disease);
-    }
+
 
     displayResults(scores);
 }

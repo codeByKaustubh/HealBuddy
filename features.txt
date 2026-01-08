@@ -1,6 +1,4 @@
 1. Triage & Urgency Advice: Add red/yellow/green triage based on matched severity & critical symptoms (e.g., chest pain → urgent). Files: app.js display logic, styles.css badges. Low effort frontend.
-2. Symptom Weight Calibration: Provide admin UI to tweak mapping weights and re-run scoring. Files: admin.html, admin.js, backend + DB to persist. Medium effort.
-3. Analytics Dashboard: Track symptom trends, popular diagnoses, user retention. Backend + admin UI. Medium effort.
 
 
 

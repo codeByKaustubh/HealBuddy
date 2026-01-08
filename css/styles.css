@@ -341,16 +341,11 @@ body {
     font-size: 0.9em;
 }
 
-.admin-link {
-    font-size: 1.4em;
-    text-decoration: none;
-}
-
 .nav-link {
     text-decoration: none;
     color: var(--text-primary);
     font-weight: 600;
-}
+} 
 
 /* ==================== HERO SECTION ==================== */
 .hero {

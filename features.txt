@@ -1,8 +1,9 @@
 1. Triage & Urgency Advice: Add red/yellow/green triage based on matched severity & critical symptoms (e.g., chest pain → urgent). Files: app.js display logic, styles.css badges. Low effort frontend.
 
+Removed features (2026-01-08):
+- Admin UI & Analytics Dashboard — removed (client-side analytics storing data in `localStorage` were removed due to privacy/maintainability concerns). To re-add, prefer a server-side analytics solution with authentication and opt-in consent.
 
 
-
-
+localStorage
 test@example.com
 password123

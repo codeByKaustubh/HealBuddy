@@ -1,20 +1,24 @@
-/* ==================== VARIABLES & FOUNDATION ==================== */
+/* ==================== VARIABLES & FOUNDATION (Retro Vaporwave) ==================== */
 :root {
-    --primary-color: #FF6B9D;
-    --primary-light: #FFA3C7;
-    --secondary-color: #4ECDC4;
-    --secondary-light: #7FE5DB;
-    --accent-color: #FFE66D;
-    --accent-dark: #FF8C42;
-    --dark-bg: #1A1A2E;
-    --light-bg: #F5F7FA;
-    --card-bg: #FFFFFF;
-    --text-primary: #1A1A2E;
-    --text-secondary: #666666;
-    --border-color: #E0E0E0;
-    --success: #4CAF50;
-    --warning: #FF9800;
-    --danger: #F44336;
+    /* New Vibrant Color Scheme */
+    --bg-primary: #f8f9fa; /* Light grey background */
+    --bg-secondary: #ffffff; /* White for panels */
+    
+    --accent-primary: #009fb7; /* Teal */
+    --accent-secondary: #fed766; /* Yellow */
+    --accent-danger: #fe4a49; /* Red */
+    
+    /* Text */
+    --text-dark: #212529;
+    --text-light: #6c757d;
+    --text-on-accent: #ffffff;
+
+    /* Borders & Shadows */
+    --border-color: #dee2e6;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-strong: 0 6px 20px rgba(0, 0, 0, 0.1);
+    
+    --transition-base: 220ms cubic-bezier(.2,.9,.2,1);
 }
 
 * {
@@ -28,10 +32,12 @@ html {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--light-bg);
-    color: var(--text-primary);
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-dark);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .hidden {
@@ -45,13 +51,25 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     opacity: 1;
     transition: opacity 0.3s ease;
+}
+
+/* Clean and simple auth modal */
+.auth-modal {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-strong);
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .modal-overlay.hidden {
@@ -61,13 +79,6 @@ body {
 .modal-overlay:not(.active) {
     opacity: 0;
     pointer-events: none;
-}
-
-.auth-modal {
-    width: 100%;
-    max-width: 450px;
-    position: relative;
-    animation: slideInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @keyframes slideInUp {
@@ -81,52 +92,13 @@ body {
     }
 }
 
-.auth-shapes {
-    position: absolute;
-    top: -50px;
-    left: -50px;
-    right: -50px;
-    bottom: -50px;
-    z-index: -1;
-}
-
-.shape {
-    position: absolute;
-    opacity: 0.1;
-    border-radius: 50%;
-}
-
-.shape-1 {
-    width: 200px;
-    height: 200px;
-    background: white;
-    top: -50px;
-    right: 100px;
-}
-
-.shape-2 {
-    width: 150px;
-    height: 150px;
-    background: white;
-    bottom: 100px;
-    left: -50px;
-}
-
-.shape-3 {
-    width: 100px;
-    height: 100px;
-    background: white;
-    top: 50%;
-    right: -30px;
-}
-
 .auth-wrapper {
-    background: white;
-    border-radius: 24px;
-    padding: 50px 40px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 48px 36px;
     position: relative;
     overflow: hidden;
+    color: var(--text-dark);
 }
 
 .auth-logo {
@@ -138,17 +110,19 @@ body {
     font-size: 3em;
     margin-bottom: 15px;
     display: block;
+    color: var(--accent-primary);
 }
 
 .auth-logo h1 {
     font-size: 2em;
-    color: var(--text-primary);
+    color: var(--text-dark);
     margin-bottom: 8px;
     font-weight: 700;
 }
 
 .auth-logo p {
-    color: var(--text-secondary);
+    color: var(--text-dark);
+    opacity: 0.7;
     font-size: 0.95em;
 }
 
@@ -168,7 +142,7 @@ body {
 
 .auth-form h2 {
     font-size: 1.5em;
-    color: var(--text-primary);
+    color: var(--text-dark);
     margin-bottom: 25px;
     font-weight: 700;
 }
@@ -181,17 +155,17 @@ body {
 .input-group input {
     width: 100%;
     padding: 14px 16px 14px 45px;
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     font-size: 1em;
-    background: white;
-    color: var(--text-primary);
+    background: #fdfdfd;
+    color: var(--text-dark);
 }
 
 .input-group input:focus {
     outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(255, 107, 157, 0.1);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 4px rgba(0, 159, 183, 0.1);
 }
 
 .input-group input::placeholder {
@@ -204,30 +178,32 @@ body {
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.1em;
+    color: #aaa;
 }
 
 .btn-primary-auth {
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #FF4081 100%);
-    color: white;
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
     border: none;
     border-radius: 12px;
     font-size: 1.05em;
     font-weight: 700;
     cursor: pointer;
     margin-top: 10px;
-    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+    box-shadow: var(--shadow-light);
 }
 
 .btn-primary-auth:active {
-    transform: translateY(0);
+    transform: translateY(1px);
+    box-shadow: none;
 }
 
 .auth-divider {
     text-align: center;
     margin: 25px 0 20px;
-    color: var(--text-secondary);
+    color: #aaa;
     font-size: 0.9em;
 }
 
@@ -235,9 +211,9 @@ body {
     width: 100%;
     display: block;
     padding: 14px;
-    background: white;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--accent-primary);
+    border: 2px solid var(--accent-primary);
     border-radius: 12px;
     font-size: 1em;
     font-weight: 700;
@@ -279,17 +255,18 @@ body {
 
 /* ==================== MAIN APP STYLES ==================== */
 .navbar {
-    background: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: var(--shadow-light);
 }
 
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 15px 20px;
+    padding: 18px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -298,82 +275,72 @@ body {
 .nav-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0;
+    gap: 12px;
 }
 
 .brand-icon {
     font-size: 1.8em;
+    color: var(--accent-primary);
 }
 
 .nav-brand h1 {
-    font-size: 1.5em;
-    color: var(--text-primary);
-    font-weight: 700;
+    font-size: 1.4em;
+    color: var(--text-dark);
+    font-weight: 900;
+    letter-spacing: 0.6px;
 }
 
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 18px;
 }
 
 .user-profile {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 }
 
 .user-name {
-    color: var(--text-primary);
-    font-weight: 600;
+    color: var(--text-dark);
+    font-weight: 700;
     font-size: 0.95em;
 }
 
 .btn-logout {
     padding: 8px 16px;
-    background: linear-gradient(135deg, var(--danger), #E53935);
-    color: white;
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
     border: none;
-    border-radius: 8px;
+    border-radius: 999px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.9em;
 }
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-primary);
-    font-weight: 600;
+    color: var(--text-dark);
+    font-weight: 700;
 } 
 
 /* ==================== HERO SECTION ==================== */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 60px 20px;
+    background: var(--bg-primary);
+    color: var(--text-dark);
+    padding: 80px 20px;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
 .hero-content {
-    max-width: 900px;
+    max-width: 940px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
     animation: fadeInDown 0.7s ease;
-}
-
-@keyframes fadeInDown {
-    from {
-        transform: translateY(-30px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 .hero h2 {
@@ -386,54 +353,34 @@ body {
 .hero p {
     font-size: 1.2em;
     margin-bottom: 40px;
-    opacity: 0.95;
+    opacity: 0.8;
 }
 
-
-.hero-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.hero .btn-analyze {
+    padding: 14px 28px;
+    font-size: 1.05rem;
+    border-radius: 40px;
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
+    border: none;
+    box-shadow: var(--shadow-light);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.floating-shape {
-    position: absolute;
-    opacity: 0.1;
-    border-radius: 50%;
+.hero .btn-analyze:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-strong);
 }
 
-.shape-a {
-    width: 300px;
-    height: 300px;
-    background: white;
-    top: -100px;
-    right: -50px;
-    animation: float 6s ease-in-out infinite;
-}
-
-.shape-b {
-    width: 200px;
-    height: 200px;
-    background: white;
-    bottom: -50px;
-    left: 10%;
-    animation: float 8s ease-in-out infinite 1s;
-}
-
-.shape-c {
-    width: 150px;
-    height: 150px;
-    background: white;
-    top: 50%;
-    left: -30px;
-    animation: float 7s ease-in-out infinite 0.5s;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 /* ==================== APP CONTAINER ==================== */
@@ -448,10 +395,10 @@ body {
 
 .symptoms-panel,
 .results-panel {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-strong);
 }
 
 .panel-header {
@@ -460,22 +407,22 @@ body {
     align-items: center;
     margin-bottom: 25px;
     padding-bottom: 15px;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .panel-header h2 {
     font-size: 1.5em;
-    color: var(--text-primary);
+    color: var(--text-dark);
     font-weight: 700;
 }
 
 .selected-badge,
 .results-icon {
-    background: linear-gradient(135deg, var(--primary-color) 0%, #FF4081 100%);
-    color: white;
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
     padding: 6px 12px;
-    border-radius: 20px;
-    font-weight: 700;
+    border-radius: 999px;
+    font-weight: 800;
     font-size: 0.85em;
 }
 
@@ -493,15 +440,16 @@ body {
 .search-input {
     width: 100%;
     padding: 12px 16px 12px 40px;
-    border: 2px solid var(--border-color);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     font-size: 0.95em;
+    background: #fdfdfd;
 }
 
 .search-input:focus {
     outline: none;
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 4px rgba(0, 159, 183, 0.1);
 }
 
 .search-icon {
@@ -510,7 +458,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.1em;
-    color: var(--text-secondary);
+    color: #aaa;
 }
 
 /* ==================== SYMPTOMS LIST ==================== */
@@ -530,7 +478,7 @@ body {
 }
 
 .symptoms-list::-webkit-scrollbar-thumb {
-    background: var(--border-color);
+    background: #ccc;
     border-radius: 10px;
 }
 
@@ -542,11 +490,17 @@ body {
     display: flex;
     align-items: center;
     padding: 12px 16px;
-    border: 2px solid var(--border-color);
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    margin-bottom: 12px;
     cursor: pointer;
-    background: white;
+    background: var(--bg-secondary);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.symptom-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-light);
 }
 
 .symptom-item input[type="checkbox"] {
@@ -554,20 +508,20 @@ body {
     height: 20px;
     margin-right: 12px;
     cursor: pointer;
-    accent-color: var(--primary-color);
+    accent-color: var(--accent-primary);
 }
 
 .symptom-item label {
     flex: 1;
     cursor: pointer;
-    font-weight: 500;
-    color: var(--text-primary);
+    font-weight: 600;
+    color: var(--text-dark);
 }
 
 .symptom-item input[type="checkbox"]:checked + label {
-    color: var(--primary-color);
-    font-weight: 700;
-}
+    color: var(--accent-primary);
+    font-weight: 800;
+} 
 
 /* ==================== BUTTONS ==================== */
 .panel-actions {
@@ -587,11 +541,10 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #FF4081 100%);
-    color: white;
-    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
+    box-shadow: var(--shadow-light);
 }
-
 .btn-icon {
     font-size: 1.2em;
 }
@@ -606,46 +559,45 @@ body {
 .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: var(--text-secondary);
+    color: var(--text-dark);
+    opacity: 0.6;
 }
 
 .empty-icon {
     font-size: 3em;
     margin-bottom: 15px;
     display: block;
+    color: var(--accent-primary);
 }
 
 .empty-state h3 {
     font-size: 1.3em;
-    color: var(--text-primary);
+    color: var(--text-dark);
     margin-bottom: 10px;
     font-weight: 700;
 }
 
 /* ==================== DISEASE CARD ==================== */
 .disease-card {
-    background: linear-gradient(135deg, #FAFAFA 0%, #F0F0F0 100%);
-    border-left: 5px solid var(--primary-color);
+    background: var(--bg-secondary);
+    border-left: 6px solid var(--border-color);
     padding: 18px;
-    border-radius: 12px;
+    border-radius: 14px;
     margin-bottom: 15px;
     cursor: pointer;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-light);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.disease-card.urgent {
-    border-left-color: var(--danger);
-    background: linear-gradient(135deg, #FFE8E8 0%, #FFD4D4 100%);
+.disease-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-strong);
 }
 
-.disease-card.high {
-    border-left-color: var(--warning);
-    background: linear-gradient(135deg, #FFF5E8 0%, #FFE8D4 100%);
-}
-
-.disease-card.low {
-    border-left-color: var(--success);
-    background: linear-gradient(135deg, #E8F5E9 0%, #D4F1D4 100%);
-}
+.disease-card.urgent { border-left-color: var(--accent-danger); }
+.disease-card.high { border-left-color: var(--accent-secondary); }
+.disease-card.low { border-left-color: var(--accent-primary); }
 
 .disease-header {
     display: flex;
@@ -656,17 +608,17 @@ body {
 
 .disease-name {
     font-size: 1.1em;
-    font-weight: 700;
-    color: var(--text-primary);
+    font-weight: 800;
+    color: var(--text-dark);
     flex: 1;
 }
 
 .match-score {
-    background: white;
+    background: var(--accent-secondary);
     padding: 6px 12px;
-    border-radius: 8px;
-    font-weight: 700;
-    color: var(--primary-color);
+    border-radius: 12px;
+    font-weight: 800;
+    color: var(--text-dark);
     min-width: 70px;
     text-align: right;
 }
@@ -674,56 +626,55 @@ body {
 .badge {
     display: inline-block;
     padding: 6px 10px;
-    border-radius: 6px;
+    border-radius: 999px;
     font-size: 0.8em;
-    font-weight: 700;
+    font-weight: 800;
     margin-right: 8px;
     margin-top: 10px;
 }
 
 .badge-category {
-    background: rgba(78, 205, 196, 0.2);
-    color: var(--secondary-color);
+    background-color: rgba(0, 159, 183, 0.1);
+    color: #006a7b;
 }
 
 .badge-severity {
-    background: rgba(255, 107, 157, 0.2);
-    color: var(--primary-color);
-}
+    background-color: rgba(254, 74, 73, 0.1);
+    color: #b92c2c;
+} 
 
 .matching-symptoms {
     font-size: 0.85em;
-    color: var(--text-secondary);
+    color: var(--text-dark);
+    opacity: 0.7;
     margin-top: 10px;
     line-height: 1.5;
 }
 
 .matching-symptoms strong {
-    color: var(--text-primary);
+    color: var(--text-dark);
     font-weight: 700;
+    opacity: 1;
 }
 
 /* ==================== TRIAGE ALERT ==================== */
 .triage-alert {
-    background: linear-gradient(135deg, #FFE8E8 0%, #FFD4D4 100%);
-    border: 2px solid var(--danger);
-    border-left: 5px solid var(--danger);
-    border-radius: 12px;
+    background: var(--bg-secondary);
+    border-radius: 14px;
     padding: 18px;
     margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-left-width: 6px;
     animation: slideDown 0.4s ease;
 }
-
-.triage-alert.high {
-    background: linear-gradient(135deg, #FFF5E8 0%, #FFE8D4 100%);
-    border-color: var(--warning);
-    border-left-color: var(--warning);
+.triage-alert.urgent { 
+    border-left-color: var(--accent-danger); 
 }
-
-.triage-alert.low {
-    background: linear-gradient(135deg, #E8F5E9 0%, #D4F1D4 100%);
-    border-color: var(--success);
-    border-left-color: var(--success);
+.triage-alert.high { 
+    border-left-color: var(--accent-secondary);
+}
+.triage-alert.low { 
+    border-left-color: var(--accent-primary);
 }
 
 .triage-header {
@@ -739,32 +690,36 @@ body {
 
 .triage-level {
     font-weight: 700;
-    color: var(--danger);
     text-transform: uppercase;
     font-size: 0.95em;
     letter-spacing: 1px;
 }
 
-.triage-alert.high .triage-level {
-    color: #E65100;
+.triage-alert.urgent .triage-level, .triage-alert.urgent .triage-icon {
+    color: var(--accent-danger);
 }
 
-.triage-alert.low .triage-level {
-    color: #2E7D32;
+.triage-alert.high .triage-level, .triage-alert.high .triage-icon {
+    color: var(--accent-secondary);
+}
+
+.triage-alert.low .triage-level, .triage-alert.low .triage-icon {
+    color: var(--accent-primary);
 }
 
 .triage-message {
-    color: var(--text-primary);
+    color: var(--text-dark);
     font-size: 0.9em;
     line-height: 1.5;
+    opacity: 0.8;
 }
 
 /* ==================== FOOTER ==================== */
 .app-footer {
-    background: #F5F7FA;
+    background: #e9ecef; /* Slightly darker than primary background */
     padding: 20px;
     text-align: center;
-    color: var(--text-secondary);
+    color: var(--text-light);
     font-size: 0.9em;
     border-top: 1px solid var(--border-color);
     margin-top: 40px;
